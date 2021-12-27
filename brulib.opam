@@ -5,11 +5,11 @@ synopsis: "BruLibrary"
 description: """
 Things and stuff.
 """
-maintainer: "Name <email>"
-authors: "Name <email>"
-license: ""
-homepage: ""
-bug-reports: ""
-dev-repo: ""
-depends: [ "ocaml" "ocamlfind" ]
+maintainer: "Olivier Brunet <olibrunet@free.fr>"
+authors: "Olivier Brunet <olibrunet@free.fr>"
+dev-repo: "git://github.com/professeurb/brulib"
+bug-reports: "git://github.com/professeurb/brulib/issues"
+homepage: "https://github.com/professeurb/brulib"
+depends: [ "ocaml" "ocamlfind" "dune" ]
 build: [ "dune" "build" "-p" name "-j" jobs ]
+license: "MIT"
