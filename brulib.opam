@@ -1,0 +1,15 @@
+opam-version: "2.0"
+name: "brulib"
+version: "0.1"
+synopsis: "BruLibrary"
+description: """
+Things and stuff.
+"""
+maintainer: "Name <email>"
+authors: "Name <email>"
+license: ""
+homepage: ""
+bug-reports: ""
+dev-repo: ""
+depends: [ "ocaml" "ocamlfind" ]
+build: [ "dune" "build" "-p" name "-j" jobs ]
