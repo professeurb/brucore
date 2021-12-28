@@ -1,4 +1,4 @@
-include module type of struct include Std.Stream end
+include module type of struct include Stdlib.Stream end
 
 val of_file : string -> string Stream.t
 
