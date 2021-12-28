@@ -11,14 +11,14 @@ let of_file file =
         close_in input;
         raise e
   in
-  Stream.from streamer
+  from streamer
 ;;
 
 let map f s =
-  Stream.from (fun _ ->
-      match Stream.peek s with
+  from (fun _ ->
+      match peek s with
       | Some v ->
-          Stream.junk s;
+          junk s;
           Some (f v)
       | None -> None)
 ;;
