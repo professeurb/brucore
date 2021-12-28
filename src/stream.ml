@@ -1,4 +1,4 @@
-open Stdlib.Stream
+include Stdlib.Stream
 
 let of_file file =
   let input = open_in file in
