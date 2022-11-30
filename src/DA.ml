@@ -5,6 +5,7 @@ exception Empty
 let init () = { len = 0; car = Array.make 16 (Obj.magic 0) }
 let is_empty t = t.len = 0
 let length t = t.len
+let carrier t = t.car
 
 let push v t =
   if t.len = Array.length t.car then begin
@@ -70,12 +71,23 @@ let top_opt t =
   if t.len = 0 then None else Some t.car.(t.len - 1)
 ;;
 
+let get t i =
+  if i < t.len then t.car.(i) else raise (Invalid_argument  "index out of bounds")
+
 let iter f t =
   let carrier = t.car in
   for i = 0 to t.len - 1 do
     f carrier.(i)
   done
 ;;
+
+let iteri f t =
+  let carrier = t.car in
+  for i = 0 to t.len - 1 do
+    f i carrier.(i)
+  done
+;;
+
 
 let fold f s t =
   let acc = ref s
@@ -85,3 +97,13 @@ let fold f s t =
   done;
   !acc
 ;;
+
+let of_stream s =
+  let da = init () in
+  Stream.iter (fun x -> push x da) s ;
+  da 
+
+let to_array t =
+  let carrier = t.car in
+  Array.init t.len (fun i -> carrier.(i))
+
