@@ -1,5 +1,4 @@
 (library
  (name brulib)
  (public_name brulib)
- (libraries camlp-streams)
 )
