@@ -91,6 +91,13 @@ let map f g =
   in
   of_fun aux
 
+let scan patt func t =
+  map (fun line -> Scanf.sscanf line patt func) t
+
+let scan_file file patt func =
+  of_file file
+  |> map (fun line -> Scanf.sscanf line patt func)
+
 let mapi ?(pos = 0) f g =
   let cnt = ref pos in
   let rec aux yield =
