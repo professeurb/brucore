@@ -28,8 +28,10 @@ let position arr h e =
   if p >= 0 then aux p else aux (p + n)
 
 let mem t e =
-  let b, _ = position t.carrier (t.hash e) e in
-  b
+  if Obj.magic e = 0 then t.has_zero
+  else
+    let b, _ = position t.carrier (t.hash e) e in
+    b
 
 let ungarded_add t h e =
   match position t h e with
