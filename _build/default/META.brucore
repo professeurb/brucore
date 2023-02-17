@@ -1,6 +1,0 @@
-description = ""
-requires = ""
-archive(byte) = "brucore.cma"
-archive(native) = "brucore.cmxa"
-plugin(byte) = "brucore.cma"
-plugin(native) = "brucore.cmxs"
