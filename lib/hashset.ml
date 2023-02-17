@@ -56,6 +56,35 @@ let add t e =
     t.len <- 1 + t.len
   end
 
+let remove_aux t pos =
+  let n = Array.length t in
+  let rec aux hole curr =
+    if Obj.magic t.(curr) = 0 then t.(hole) <- Obj.magic 0
+    else
+      let ((h, _) as elt) = t.(curr) in
+      let hash =
+        let h' = h mod n in
+        if h' >= 0 then h' else h' + n
+      in
+      if
+        (hash <= hole && hole < curr)
+        || (curr < hash && (hash <= hole || hole < curr))
+      then begin
+        t.(hole) <- elt;
+        aux curr ((curr + 1) mod n)
+      end
+      else aux hole ((curr + 1) mod n)
+  in
+  aux pos ((pos + 1) mod n)
+
+let remove t e =
+  if Obj.magic e = 0 then t.has_zero <- false
+  else begin
+    match position t.carrier (t.hash e) e with
+    | false, _ -> ()
+    | true, pos -> remove_aux t.carrier pos
+  end
+
 let to_list t =
   let n = Array.length t.carrier
   and l = ref [] in
