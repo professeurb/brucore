@@ -8,6 +8,7 @@ bug-reports: "https://github.com/profb/brucore/issues"
 depends: [
   "ocaml"
   "dune" {>= "3.6"}
+  "effect"
   "odoc" {with-doc}
 ]
 build: [
